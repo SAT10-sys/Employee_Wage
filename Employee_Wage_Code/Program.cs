@@ -11,7 +11,7 @@ namespace Employee_Wage_Code
         public const int EMP_RATE_PER_HR= 20;
         public const int NUM_WRKNG_DAYS = 2;
         public const int MAX_HRS = 10;
-        static void Main(string[] args)
+        public static int computeWage()
         {
             //variables
             int empHr = 0;
@@ -38,7 +38,12 @@ namespace Employee_Wage_Code
                 Console.WriteLine(" Days: " + totalWrkDay + " Employee Hours: " + empHr);
             }
             int totEmpWage = totalEmpHr * EMP_RATE_PER_HR;
-            Console.WriteLine(" Total Employee Wage: " + totEmpWage);
+            Console.WriteLine(" Total Employee Wage is: " + totEmpWage);
+            return totEmpWage;
+        }
+        static void main(string[] args)
+        {
+            computeWage();
         }
     }
 }
