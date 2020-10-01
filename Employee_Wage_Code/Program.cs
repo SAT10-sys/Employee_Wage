@@ -8,21 +8,15 @@ namespace Employee_Wage_Code
         // constants
         public const int IS_FULL_TIME = 2;
         public const int IS_PART_TIME = 1;
-        public const int EMP_RATE_PER_HR= 20;
-        public const int NUM_WRKNG_DAYS = 2;
-        public const int MAX_HRS = 10;
-        public static int computeWage()
+        public static int computeWage(string company, int empRatePerHour, int numWorkingDay, int maxHrsPerMonth)
         {
-            //variables
-            int empHr = 0;
-            int totalEmpHr = 0;
-            int totalWrkDay = 0;
-            while (totalEmpHr <= MAX_HRS && totalWrkDay < NUM_WRKNG_DAYS)
+            int empHr = 0, totEmpHrs = 0, totWorkingDays = 0;
+            while(totEmpHrs<=maxHrsPerMonth && totWorkingDays<numWorkingDay)
             {
-                totalWrkDay++;
-                Random random = new Random();
-                int empChk = random.Next(0, 3);
-                switch (empChk)
+                totWorkingDays++;
+                Random random = new Random(0);
+                int empChk = random.Next(0, 2);
+                switch(empChk)
                 {
                     case IS_PART_TIME:
                         empHr = 4;
@@ -34,16 +28,17 @@ namespace Employee_Wage_Code
                         empHr = 0;
                         break;
                 }
-                totalEmpHr += empHr;
-                Console.WriteLine(" Days: " + totalWrkDay + " Employee Hours: " + empHr);
+                totEmpHrs += empHr;
+                Console.WriteLine(" Days: " + totWorkingDays + " Employee Hours: " + empHr);
             }
-            int totEmpWage = totalEmpHr * EMP_RATE_PER_HR;
-            Console.WriteLine(" Total Employee Wage is: " + totEmpWage);
+            int totEmpWage = totEmpHrs * empRatePerHour;
+            Console.WriteLine(" Total Employee Wage for company: " + company + " is: " + totEmpWage);
             return totEmpWage;
         }
-        static void main(string[] args)
+        static void Main(string[] args)
         {
-            computeWage();
+            computeWage("Mart", 20, 2, 10);
+            computeWage("Reliance", 10, 4, 20);
         }
     }
 }
